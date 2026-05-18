@@ -115,12 +115,13 @@ jobs:
                      -configuration Debug \
                      CODE_SIGNING_ALLOWED=NO \
                      CODE_SIGNING_REQUIRED=NO \
+                     -derivedDataPath ios/build \
                      clean build
 
       - name: Package iOS Project
         run: |
           mkdir -p ios/build/Payload
-          cp -r ios/App/build/Debug-iphoneos/App.app ios/build/Payload/
+          cp -r ios/build/Build/Products/Debug-iphoneos/App.app ios/build/Payload/
           cd ios/build
           zip -r ../../zimozo-pos-ios-unsigned.ipa Payload
         continue-on-error: true
