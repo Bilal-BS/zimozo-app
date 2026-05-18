@@ -1,0 +1,10 @@
+{
+  "appId": "com.zimozo.android",
+  "appName": "Zimozo Android",
+  "webDir": "dist",
+  "plugins": {
+    "CapacitorHttp": {
+      "enabled": true
+    }
+  }
+}
