@@ -21,11 +21,11 @@ jobs:
           node-version: 22
           cache: 'npm'
 
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: '17'
+          java-version: '21'
 
       - name: Install Dependencies
         run: npm ci --legacy-peer-deps
@@ -109,7 +109,7 @@ jobs:
 
       - name: Compile iOS Project (Unsigned Xcode Build)
         run: |
-          xcodebuild -workspace ios/App/App.xcworkspace \
+          xcodebuild -project ios/App/App.xcodeproj \
                      -scheme App \
                      -sdk iphoneos \
                      -configuration Debug \
@@ -120,7 +120,7 @@ jobs:
       - name: Package iOS Project
         run: |
           mkdir -p ios/build/Payload
-          cp -r ios/App/build/Release-iphoneos/App.app ios/build/Payload/
+          cp -r ios/App/build/Debug-iphoneos/App.app ios/build/Payload/
           cd ios/build
           zip -r ../../zimozo-pos-ios-unsigned.ipa Payload
         continue-on-error: true
