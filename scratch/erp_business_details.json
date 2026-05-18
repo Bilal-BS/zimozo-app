@@ -1,0 +1,1114 @@
+{
+  "id": 53,
+  "name": "BS Mobile",
+  "currency_id": 111,
+  "start_date": "2024-06-11",
+  "tax_number_1": "114766011 7000",
+  "tax_label_1": "VAT",
+  "tax_number_2": null,
+  "tax_label_2": null,
+  "code_label_1": null,
+  "code_1": null,
+  "code_label_2": null,
+  "code_2": null,
+  "default_sales_tax": 3,
+  "default_profit_percent": 0,
+  "owner_id": 104,
+  "time_zone": "Asia/Colombo",
+  "fy_start_month": 1,
+  "accounting_method": "fifo",
+  "default_sales_discount": "0.00",
+  "sell_price_tax": "includes",
+  "logo": "https://erp.zimozo.lk/uploads/business_logos/1741324687_BS Logo.jpg",
+  "sku_prefix": null,
+  "enable_product_expiry": 1,
+  "expiry_type": "add_expiry",
+  "on_product_expiry": "stop_selling",
+  "stop_selling_before": 3,
+  "enable_tooltip": 1,
+  "purchase_in_diff_currency": 0,
+  "purchase_currency_id": null,
+  "p_exchange_rate": "1.000",
+  "transaction_edit_days": 30,
+  "stock_expiry_alert_days": 30,
+  "keyboard_shortcuts": {
+    "pos": {
+      "express_checkout": "shift+e",
+      "pay_n_ckeckout": "shift+p",
+      "draft": "shift+d",
+      "cancel": "shift+c",
+      "recent_product_quantity": "f2",
+      "weighing_scale": null,
+      "edit_discount": "shift+i",
+      "edit_order_tax": "shift+t",
+      "add_payment_row": "shift+r",
+      "finalize_payment": "shift+f",
+      "add_new_product": "f4"
+    }
+  },
+  "pos_settings": {
+    "amount_rounding_method": null,
+    "enable_sales_order": "1",
+    "cmmsn_calculation_type": "payment_received",
+    "razor_pay_key_id": null,
+    "razor_pay_key_secret": null,
+    "stripe_public_key": null,
+    "stripe_secret_key": null,
+    "is_pos_subtotal_editable": "1",
+    "enable_transaction_date": "1",
+    "inline_service_staff": "1",
+    "enable_weighing_scale": "1",
+    "show_invoice_scheme": "1",
+    "show_invoice_layout": "1",
+    "show_pricing_on_product_sugesstion": "1",
+    "cash_denominations": "1,2,5,10,20,50,100,500,1000,5000",
+    "enable_cash_denomination_on": "pos_screen",
+    "enable_cash_denomination_for_payment_methods": [
+      "cash"
+    ],
+    "cash_denomination_strict_check": "1",
+    "disable_pay_checkout": 0,
+    "disable_draft": 0,
+    "disable_express_checkout": 0,
+    "hide_product_suggestion": 0,
+    "hide_recent_trans": 0,
+    "disable_discount": 0,
+    "disable_order_tax": 0
+  },
+  "woocommerce_skipped_orders": null,
+  "woocommerce_wh_oc_secret": null,
+  "woocommerce_wh_ou_secret": null,
+  "woocommerce_wh_od_secret": null,
+  "woocommerce_wh_or_secret": null,
+  "essentials_settings": "{\"leave_ref_no_prefix\":null,\"leave_instructions\":null,\"payroll_ref_no_prefix\":null,\"essentials_todos_prefix\":null,\"grace_before_checkin\":\"10\",\"grace_after_checkin\":\"15\",\"grace_before_checkout\":\"15\",\"grace_after_checkout\":\"10\",\"is_location_required\":0,\"calculate_sales_target_commission_without_tax\":0}",
+  "manufacturing_settings": "{\"ref_no_prefix\":null,\"disable_editing_ingredient_qty\":false,\"enable_updating_product_price\":true}",
+  "weighing_scale_setting": {
+    "label_prefix": null,
+    "product_sku_length": "4",
+    "qty_length": "3",
+    "qty_length_decimal": "2"
+  },
+  "enable_brand": 1,
+  "enable_category": 1,
+  "enable_sub_category": 1,
+  "enable_price_tax": 1,
+  "enable_purchase_status": 1,
+  "enable_lot_number": 1,
+  "enable_purchase_description": 0,
+  "default_unit": 91,
+  "enable_sub_units": 1,
+  "enable_racks": 0,
+  "enable_row": 1,
+  "enable_position": 0,
+  "enable_editing_product_from_purchase": 1,
+  "sales_cmsn_agnt": "cmsn_agnt",
+  "item_addition_method": 0,
+  "enable_inline_tax": 1,
+  "currency_symbol_placement": "before",
+  "enabled_modules": [
+    "purchases",
+    "add_sale",
+    "pos_sale",
+    "stock_transfers",
+    "stock_adjustment",
+    "expenses",
+    "account",
+    "tables",
+    "modifiers",
+    "service_staff",
+    "booking",
+    "kitchen",
+    "subscription",
+    "types_of_service"
+  ],
+  "date_format": "m/d/Y",
+  "time_format": "24",
+  "currency_precision": 2,
+  "quantity_precision": 2,
+  "ref_no_prefixes": {
+    "purchase": "PO",
+    "purchase_return": null,
+    "purchase_requisition": null,
+    "purchase_order": null,
+    "stock_transfer": "ST",
+    "stock_adjustment": "SA",
+    "sell_return": "CN",
+    "expense": "EP",
+    "contacts": "CO",
+    "purchase_payment": "PP",
+    "sell_payment": "SP",
+    "expense_payment": null,
+    "business_location": "BL",
+    "username": null,
+    "subscription": null,
+    "draft": null,
+    "sales_order": null
+  },
+  "theme_color": "primary",
+  "created_by": null,
+  "hms_settings": "{\"booking_pdf\":{\"footer_text\":\"<p>GOOD DAY<\\/p>\"},\"prefix\":\"uiip;k\"}",
+  "crm_settings": null,
+  "repair_settings": "{\"repair_tc_condition\":null,\"job_sheet_prefix\":null,\"problem_reported_by_customer\":null,\"product_condition\":null,\"product_configuration\":null,\"job_sheet_custom_field_1\":\"Old Invoice\",\"job_sheet_custom_field_2\":null,\"job_sheet_custom_field_3\":null,\"job_sheet_custom_field_4\":null,\"job_sheet_custom_field_5\":null,\"default_repair_checklist\":null,\"default_status\":\"\"}",
+  "repair_jobsheet_settings": "{\"customer_label\":null,\"client_id_label\":null,\"client_tax_label\":null,\"label_width\":\"76.2\",\"label_height\":\"25.4\",\"show_customer\":\"1\",\"show_customer_name_in_label\":\"1\",\"show_customer_address_in_label\":\"1\",\"show_customer_email_in_label\":\"1\",\"show_sales_person_in_label\":\"1\",\"show_barcode_in_label\":\"1\",\"show_problem_in_label\":\"1\"}",
+  "asset_settings": null,
+  "accounting_settings": "{\"journal_entry_prefix\":null,\"transfer_prefix\":null,\"accounting_default_map\":{\"58\":{\"sale\":{\"payment_account\":null,\"deposit_to\":null},\"sell_payment\":{\"payment_account\":null,\"deposit_to\":null},\"purchases\":{\"payment_account\":null,\"deposit_to\":null},\"purchase_payment\":{\"payment_account\":null,\"deposit_to\":null},\"expense\":{\"payment_account\":null,\"deposit_to\":null},\"expense_92\":{\"payment_account\":null,\"deposit_to\":null},\"expense_93\":{\"payment_account\":null,\"deposit_to\":null},\"expense_94\":{\"payment_account\":null,\"deposit_to\":null},\"expense_95\":{\"payment_account\":null,\"deposit_to\":null},\"expense_96\":{\"payment_account\":null,\"deposit_to\":null},\"expense_449\":{\"payment_account\":null,\"deposit_to\":null},\"expense_607\":{\"payment_account\":\"2790\",\"deposit_to\":\"2777\"}},\"73\":{\"sale\":{\"payment_account\":null,\"deposit_to\":null},\"sell_payment\":{\"payment_account\":null,\"deposit_to\":null},\"purchases\":{\"payment_account\":null,\"deposit_to\":null},\"purchase_payment\":{\"payment_account\":null,\"deposit_to\":null},\"expense\":{\"payment_account\":null,\"deposit_to\":null},\"expense_92\":{\"payment_account\":null,\"deposit_to\":null},\"expense_93\":{\"payment_account\":null,\"deposit_to\":null},\"expense_94\":{\"payment_account\":null,\"deposit_to\":null},\"expense_95\":{\"payment_account\":null,\"deposit_to\":null},\"expense_96\":{\"payment_account\":null,\"deposit_to\":null},\"expense_449\":{\"payment_account\":null,\"deposit_to\":null},\"expense_607\":{\"payment_account\":null,\"deposit_to\":null}},\"91\":{\"sale\":{\"payment_account\":null,\"deposit_to\":null},\"sell_payment\":{\"payment_account\":null,\"deposit_to\":null},\"purchases\":{\"payment_account\":null,\"deposit_to\":null},\"purchase_payment\":{\"payment_account\":null,\"deposit_to\":null},\"expense\":{\"payment_account\":null,\"deposit_to\":null},\"expense_92\":{\"payment_account\":null,\"deposit_to\":null},\"expense_93\":{\"payment_account\":null,\"deposit_to\":null},\"expense_94\":{\"payment_account\":null,\"deposit_to\":null},\"expense_95\":{\"payment_account\":null,\"deposit_to\":null},\"expense_96\":{\"payment_account\":null,\"deposit_to\":null},\"expense_449\":{\"payment_account\":null,\"deposit_to\":null},\"expense_607\":{\"payment_account\":null,\"deposit_to\":null}}}}",
+  "enable_rp": 1,
+  "rp_name": "Reward",
+  "amount_for_unit_rp": "1000.0000",
+  "min_order_total_for_rp": "1.0000",
+  "max_rp_per_order": null,
+  "redeem_amount_per_unit_rp": "100.0000",
+  "min_order_total_for_redeem": "1000.0000",
+  "min_redeem_point": 1,
+  "max_redeem_point": 10000,
+  "rp_expiry_period": 1,
+  "rp_expiry_type": "year",
+  "email_settings": {
+    "use_superadmin_settings": "1",
+    "mail_driver": "smtp",
+    "mail_host": null,
+    "mail_port": null,
+    "mail_username": null,
+    "mail_password": null,
+    "mail_encryption": null,
+    "mail_from_address": null,
+    "mail_from_name": "BS MOBILE"
+  },
+  "sms_settings": {
+    "sms_service": "hutch",
+    "nexmo_key": null,
+    "nexmo_secret": null,
+    "nexmo_from": null,
+    "twilio_sid": null,
+    "twilio_token": null,
+    "twilio_from": null,
+    "notify_url": null,
+    "notify_send_to_param_name": null,
+    "notify_msg_param_name": null,
+    "notify_request_method": "get",
+    "notify_param_1": null,
+    "notify_param_val_1": null,
+    "notify_param_2": null,
+    "notify_param_val_2": null,
+    "notify_param_3": null,
+    "notify_param_val_3": null,
+    "notify_param_4": null,
+    "notify_param_val_4": null,
+    "notify_param_5": null,
+    "notify_param_val_5": null,
+    "hutch_username": "thanish@codestudio.lk",
+    "hutch_password": "Hutch@2424",
+    "hutch_campaignname": "Test campaign",
+    "hutch_mask": "Al Fathi",
+    "url": null,
+    "send_to_param_name": "to",
+    "msg_param_name": "text",
+    "request_method": "post",
+    "header_1": null,
+    "header_val_1": null,
+    "header_2": null,
+    "header_val_2": null,
+    "header_3": null,
+    "header_val_3": null,
+    "param_1": null,
+    "param_val_1": null,
+    "param_2": null,
+    "param_val_2": null,
+    "param_3": null,
+    "param_val_3": null,
+    "param_4": null,
+    "param_val_4": null,
+    "param_5": null,
+    "param_val_5": null,
+    "param_6": null,
+    "param_val_6": null,
+    "param_7": null,
+    "param_val_7": null,
+    "param_8": null,
+    "param_val_8": null,
+    "param_9": null,
+    "param_val_9": null,
+    "param_10": null,
+    "param_val_10": null
+  },
+  "custom_labels": {
+    "payments": {
+      "custom_pay_1": "Advance",
+      "custom_pay_2": "Exchange",
+      "custom_pay_3": "KOKO",
+      "custom_pay_4": "Mint Pay",
+      "custom_pay_5": null,
+      "custom_pay_6": null,
+      "custom_pay_7": null
+    },
+    "contact": {
+      "custom_field_1": null,
+      "custom_field_2": null,
+      "custom_field_3": null,
+      "custom_field_4": null,
+      "custom_field_5": null,
+      "custom_field_6": null,
+      "custom_field_7": null,
+      "custom_field_8": null,
+      "custom_field_9": null,
+      "custom_field_10": null
+    },
+    "product": {
+      "custom_field_1": "Supplier Name",
+      "custom_field_2": "Supplier Code",
+      "custom_field_3": "Item Type",
+      "custom_field_4": "Fabric Type",
+      "custom_field_5": "5",
+      "custom_field_6": "6",
+      "custom_field_7": "7",
+      "custom_field_8": null,
+      "custom_field_9": null,
+      "custom_field_10": null,
+      "custom_field_11": null,
+      "custom_field_12": null,
+      "custom_field_13": null,
+      "custom_field_14": null,
+      "custom_field_15": null,
+      "custom_field_16": null,
+      "custom_field_17": null,
+      "custom_field_18": null,
+      "custom_field_19": null,
+      "custom_field_20": null
+    },
+    "product_cf_details": [
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      },
+      {
+        "type": null,
+        "dropdown_options": null
+      }
+    ],
+    "location": {
+      "custom_field_1": null,
+      "custom_field_2": null,
+      "custom_field_3": null,
+      "custom_field_4": null
+    },
+    "user": {
+      "custom_field_1": "NIC",
+      "custom_field_2": "Member No",
+      "custom_field_3": null,
+      "custom_field_4": null
+    },
+    "purchase": {
+      "custom_field_1": null,
+      "custom_field_2": null,
+      "custom_field_3": null,
+      "custom_field_4": null
+    },
+    "purchase_shipping": {
+      "custom_field_1": null,
+      "custom_field_2": null,
+      "custom_field_3": null,
+      "custom_field_4": null,
+      "custom_field_5": null
+    },
+    "sell": {
+      "custom_field_1": "bus No",
+      "custom_field_2": "Driver",
+      "custom_field_3": "Staff",
+      "custom_field_4": null
+    },
+    "shipping": {
+      "custom_field_1": null,
+      "custom_field_2": null,
+      "custom_field_3": null,
+      "custom_field_4": null,
+      "custom_field_5": null
+    },
+    "types_of_service": {
+      "custom_field_1": null,
+      "custom_field_2": null,
+      "custom_field_3": null,
+      "custom_field_4": "Trouser",
+      "custom_field_5": null,
+      "custom_field_6": null
+    }
+  },
+  "common_settings": {
+    "enable_product_warranty": "1",
+    "default_credit_limit": null,
+    "enable_purchase_order": "1",
+    "enable_purchase_requisition": "1",
+    "default_datatable_page_entries": "25"
+  },
+  "fardar_express_setting": null,
+  "gallface_setting": null,
+  "customerpanel_setting": "customerpanelvideo_1743154528.mp4",
+  "return_invoice_template": "slim2",
+  "is_active": 1,
+  "created_at": "2024-06-11T02:37:20.000000Z",
+  "updated_at": "2026-04-08T04:24:26.000000Z",
+  "locations": [
+    {
+      "id": 58,
+      "business_id": 53,
+      "location_id": "BL0001",
+      "name": "BS Mobile",
+      "landmark": "No. 225/145 Fergusion Road, Colombo 15",
+      "country": "Sri Lanka",
+      "state": "WP",
+      "city": "Colombo",
+      "zip_code": "01500",
+      "invoice_scheme_id": 54,
+      "sale_invoice_scheme_id": 54,
+      "invoice_layout_id": 179,
+      "sale_invoice_layout_id": 179,
+      "selling_price_group_id": null,
+      "print_receipt_on_invoice": 1,
+      "receipt_printer_type": "browser",
+      "printer_id": null,
+      "mobile": "0775175760",
+      "alternate_number": "0755175760",
+      "email": null,
+      "website": null,
+      "featured_products": null,
+      "is_active": 1,
+      "default_payment_accounts": {
+        "cash": {
+          "is_enabled": "1",
+          "account": "609"
+        },
+        "card": {
+          "is_enabled": "1",
+          "account": "478"
+        },
+        "cheque": {
+          "is_enabled": "1",
+          "account": "478"
+        },
+        "bank_transfer": {
+          "is_enabled": "1",
+          "account": "478"
+        },
+        "other": {
+          "is_enabled": "1",
+          "account": "60"
+        },
+        "custom_pay_1": {
+          "is_enabled": "1",
+          "account": "547"
+        },
+        "custom_pay_2": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_3": {
+          "is_enabled": "1",
+          "account": "547"
+        },
+        "custom_pay_4": {
+          "is_enabled": "1",
+          "account": "549"
+        },
+        "custom_pay_5": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_6": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_7": {
+          "is_enabled": "1",
+          "account": null
+        }
+      },
+      "custom_field1": null,
+      "custom_field2": null,
+      "custom_field3": null,
+      "custom_field4": null,
+      "accounting_default_map": "{\"sale\":{\"payment_account\":null,\"deposit_to\":null},\"sell_payment\":{\"payment_account\":null,\"deposit_to\":null},\"purchases\":{\"payment_account\":null,\"deposit_to\":null},\"purchase_payment\":{\"payment_account\":null,\"deposit_to\":null},\"expense\":{\"payment_account\":null,\"deposit_to\":null},\"expense_92\":{\"payment_account\":null,\"deposit_to\":null},\"expense_93\":{\"payment_account\":null,\"deposit_to\":null},\"expense_94\":{\"payment_account\":null,\"deposit_to\":null},\"expense_95\":{\"payment_account\":null,\"deposit_to\":null},\"expense_96\":{\"payment_account\":null,\"deposit_to\":null},\"expense_449\":{\"payment_account\":null,\"deposit_to\":null},\"expense_607\":{\"payment_account\":\"2790\",\"deposit_to\":\"2777\"}}",
+      "deleted_at": null,
+      "created_at": "2024-06-11T02:37:20.000000Z",
+      "updated_at": "2026-01-19T10:54:24.000000Z"
+    },
+    {
+      "id": 73,
+      "business_id": 53,
+      "location_id": null,
+      "name": "BS RESTAURANTS",
+      "landmark": "No. 225/145 1/1  Fergusion Road, Colombo 15",
+      "country": "Sri Lanka",
+      "state": "WP",
+      "city": "Colombo",
+      "zip_code": "01500",
+      "invoice_scheme_id": 54,
+      "sale_invoice_scheme_id": 54,
+      "invoice_layout_id": 53,
+      "sale_invoice_layout_id": 53,
+      "selling_price_group_id": null,
+      "print_receipt_on_invoice": 1,
+      "receipt_printer_type": "browser",
+      "printer_id": null,
+      "mobile": "0755175760",
+      "alternate_number": null,
+      "email": "bilalm2912@gmail.com",
+      "website": null,
+      "featured_products": null,
+      "is_active": 1,
+      "default_payment_accounts": {
+        "cash": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "card": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "cheque": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "bank_transfer": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "other": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_1": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_2": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_3": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_4": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_5": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_6": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_7": {
+          "is_enabled": "1",
+          "account": null
+        }
+      },
+      "custom_field1": null,
+      "custom_field2": null,
+      "custom_field3": null,
+      "custom_field4": null,
+      "accounting_default_map": "{\"sale\":{\"payment_account\":null,\"deposit_to\":null},\"sell_payment\":{\"payment_account\":null,\"deposit_to\":null},\"purchases\":{\"payment_account\":null,\"deposit_to\":null},\"purchase_payment\":{\"payment_account\":null,\"deposit_to\":null},\"expense\":{\"payment_account\":null,\"deposit_to\":null},\"expense_92\":{\"payment_account\":null,\"deposit_to\":null},\"expense_93\":{\"payment_account\":null,\"deposit_to\":null},\"expense_94\":{\"payment_account\":null,\"deposit_to\":null},\"expense_95\":{\"payment_account\":null,\"deposit_to\":null},\"expense_96\":{\"payment_account\":null,\"deposit_to\":null},\"expense_449\":{\"payment_account\":null,\"deposit_to\":null},\"expense_607\":{\"payment_account\":null,\"deposit_to\":null}}",
+      "deleted_at": null,
+      "created_at": "2024-07-02T01:19:01.000000Z",
+      "updated_at": "2025-07-21T13:39:40.000000Z"
+    },
+    {
+      "id": 91,
+      "business_id": 53,
+      "location_id": "BL0003",
+      "name": "BS FASHION",
+      "landmark": "No. 225/145 1A, Fergusion Road, Colombo 15",
+      "country": "Sri Lanka",
+      "state": "WP",
+      "city": "Colombo",
+      "zip_code": "01500",
+      "invoice_scheme_id": 237,
+      "sale_invoice_scheme_id": 54,
+      "invoice_layout_id": 244,
+      "sale_invoice_layout_id": 106,
+      "selling_price_group_id": null,
+      "print_receipt_on_invoice": 1,
+      "receipt_printer_type": "browser",
+      "printer_id": null,
+      "mobile": "+94775175760",
+      "alternate_number": null,
+      "email": "bilalcs321@gmail.com",
+      "website": null,
+      "featured_products": null,
+      "is_active": 1,
+      "default_payment_accounts": {
+        "cash": {
+          "is_enabled": "1",
+          "account": "478"
+        },
+        "card": {
+          "is_enabled": "1",
+          "account": "478"
+        },
+        "cheque": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "bank_transfer": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "other": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_1": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_2": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_3": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_4": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_5": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_6": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_7": {
+          "is_enabled": "1",
+          "account": null
+        }
+      },
+      "custom_field1": null,
+      "custom_field2": null,
+      "custom_field3": null,
+      "custom_field4": null,
+      "accounting_default_map": "{\"sale\":{\"payment_account\":null,\"deposit_to\":null},\"sell_payment\":{\"payment_account\":null,\"deposit_to\":null},\"purchases\":{\"payment_account\":null,\"deposit_to\":null},\"purchase_payment\":{\"payment_account\":null,\"deposit_to\":null},\"expense\":{\"payment_account\":null,\"deposit_to\":null},\"expense_92\":{\"payment_account\":null,\"deposit_to\":null},\"expense_93\":{\"payment_account\":null,\"deposit_to\":null},\"expense_94\":{\"payment_account\":null,\"deposit_to\":null},\"expense_95\":{\"payment_account\":null,\"deposit_to\":null},\"expense_96\":{\"payment_account\":null,\"deposit_to\":null},\"expense_449\":{\"payment_account\":null,\"deposit_to\":null},\"expense_607\":{\"payment_account\":null,\"deposit_to\":null}}",
+      "deleted_at": null,
+      "created_at": "2024-07-16T07:33:57.000000Z",
+      "updated_at": "2025-11-01T06:50:43.000000Z"
+    },
+    {
+      "id": 265,
+      "business_id": 53,
+      "location_id": "BL0004",
+      "name": "BS Scent",
+      "landmark": "F/3/1, Samapura Flats, Maradana, Colombo 10",
+      "country": "Sri Lanka",
+      "state": "Western",
+      "city": "Colombo",
+      "zip_code": "01000",
+      "invoice_scheme_id": 54,
+      "sale_invoice_scheme_id": 54,
+      "invoice_layout_id": 53,
+      "sale_invoice_layout_id": 53,
+      "selling_price_group_id": null,
+      "print_receipt_on_invoice": 1,
+      "receipt_printer_type": "browser",
+      "printer_id": null,
+      "mobile": "0760824410",
+      "alternate_number": "0715217938",
+      "email": "muhammedsajjath586@gmail.com",
+      "website": null,
+      "featured_products": null,
+      "is_active": 1,
+      "default_payment_accounts": {
+        "cash": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "card": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "cheque": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "bank_transfer": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "other": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_1": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_2": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_3": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_4": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_5": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_6": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_7": {
+          "is_enabled": "1",
+          "account": null
+        }
+      },
+      "custom_field1": null,
+      "custom_field2": null,
+      "custom_field3": null,
+      "custom_field4": null,
+      "accounting_default_map": null,
+      "deleted_at": null,
+      "created_at": "2025-08-21T13:17:56.000000Z",
+      "updated_at": "2025-08-21T13:17:56.000000Z"
+    },
+    {
+      "id": 266,
+      "business_id": 53,
+      "location_id": "BL0005",
+      "name": "Smart Fabric",
+      "landmark": "51/2 amana bank building bankshall street pettah",
+      "country": "Srilanka",
+      "state": "western",
+      "city": "colombo",
+      "zip_code": "01000",
+      "invoice_scheme_id": 54,
+      "sale_invoice_scheme_id": 54,
+      "invoice_layout_id": 53,
+      "sale_invoice_layout_id": 53,
+      "selling_price_group_id": null,
+      "print_receipt_on_invoice": 1,
+      "receipt_printer_type": "browser",
+      "printer_id": null,
+      "mobile": "0779223237",
+      "alternate_number": "0771119391",
+      "email": "smartrez12@gmail.com",
+      "website": null,
+      "featured_products": null,
+      "is_active": 1,
+      "default_payment_accounts": {
+        "cash": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "card": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "cheque": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "bank_transfer": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "other": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_1": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_2": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_3": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_4": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_5": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_6": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_7": {
+          "is_enabled": "1",
+          "account": null
+        }
+      },
+      "custom_field1": null,
+      "custom_field2": null,
+      "custom_field3": null,
+      "custom_field4": null,
+      "accounting_default_map": null,
+      "deleted_at": null,
+      "created_at": "2025-08-21T13:17:57.000000Z",
+      "updated_at": "2025-08-21T13:17:57.000000Z"
+    },
+    {
+      "id": 300,
+      "business_id": 53,
+      "location_id": "W001",
+      "name": "Warehouse",
+      "landmark": null,
+      "country": "Sri lanka",
+      "state": "Western",
+      "city": "Colombo",
+      "zip_code": "014",
+      "invoice_scheme_id": 237,
+      "sale_invoice_scheme_id": 54,
+      "invoice_layout_id": 244,
+      "sale_invoice_layout_id": 53,
+      "selling_price_group_id": 0,
+      "print_receipt_on_invoice": 1,
+      "receipt_printer_type": "browser",
+      "printer_id": null,
+      "mobile": "012345678",
+      "alternate_number": "01123456789",
+      "email": "codestudio@gmail.lk",
+      "website": null,
+      "featured_products": null,
+      "is_active": 1,
+      "default_payment_accounts": {
+        "cash": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "card": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "cheque": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "bank_transfer": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "other": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_1": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_2": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_3": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_4": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_5": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_6": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_7": {
+          "is_enabled": "1",
+          "account": null
+        }
+      },
+      "custom_field1": null,
+      "custom_field2": null,
+      "custom_field3": null,
+      "custom_field4": null,
+      "accounting_default_map": null,
+      "deleted_at": null,
+      "created_at": "2025-11-01T06:41:05.000000Z",
+      "updated_at": "2025-11-01T06:49:29.000000Z"
+    },
+    {
+      "id": 301,
+      "business_id": 53,
+      "location_id": "S001",
+      "name": "Sewing Section",
+      "landmark": null,
+      "country": "Sri lanka",
+      "state": "Western",
+      "city": "Colombo",
+      "zip_code": "014",
+      "invoice_scheme_id": 54,
+      "sale_invoice_scheme_id": 54,
+      "invoice_layout_id": 53,
+      "sale_invoice_layout_id": 53,
+      "selling_price_group_id": 0,
+      "print_receipt_on_invoice": 1,
+      "receipt_printer_type": "browser",
+      "printer_id": null,
+      "mobile": "0755755611",
+      "alternate_number": null,
+      "email": null,
+      "website": null,
+      "featured_products": null,
+      "is_active": 1,
+      "default_payment_accounts": {
+        "cash": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "card": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "cheque": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "bank_transfer": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "other": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_1": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_2": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_3": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_4": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_5": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_6": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_7": {
+          "is_enabled": "1",
+          "account": null
+        }
+      },
+      "custom_field1": null,
+      "custom_field2": null,
+      "custom_field3": null,
+      "custom_field4": null,
+      "accounting_default_map": null,
+      "deleted_at": null,
+      "created_at": "2025-11-01T07:00:15.000000Z",
+      "updated_at": "2025-11-01T07:00:15.000000Z"
+    },
+    {
+      "id": 320,
+      "business_id": 53,
+      "location_id": "BL0008",
+      "name": "Bs Pharmacy",
+      "landmark": null,
+      "country": "sri lanka",
+      "state": "western",
+      "city": "colombo",
+      "zip_code": "00600",
+      "invoice_scheme_id": 54,
+      "sale_invoice_scheme_id": 54,
+      "invoice_layout_id": 53,
+      "sale_invoice_layout_id": 53,
+      "selling_price_group_id": 0,
+      "print_receipt_on_invoice": 1,
+      "receipt_printer_type": "browser",
+      "printer_id": null,
+      "mobile": null,
+      "alternate_number": null,
+      "email": null,
+      "website": null,
+      "featured_products": null,
+      "is_active": 1,
+      "default_payment_accounts": {
+        "cash": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "card": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "cheque": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "bank_transfer": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "other": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_1": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_2": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_3": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_4": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_5": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_6": {
+          "is_enabled": "1",
+          "account": null
+        },
+        "custom_pay_7": {
+          "is_enabled": "1",
+          "account": null
+        }
+      },
+      "custom_field1": null,
+      "custom_field2": null,
+      "custom_field3": null,
+      "custom_field4": null,
+      "accounting_default_map": null,
+      "deleted_at": null,
+      "created_at": "2025-11-27T10:28:02.000000Z",
+      "updated_at": "2025-11-27T10:28:02.000000Z"
+    }
+  ],
+  "currency": {
+    "id": 111,
+    "country": "Sri Lanka",
+    "currency": "Rupees",
+    "code": "LKR",
+    "symbol": "₨",
+    "thousand_separator": ",",
+    "decimal_separator": ".",
+    "created_at": null,
+    "updated_at": null
+  },
+  "printers": [
+    {
+      "id": 5,
+      "business_id": 53,
+      "name": "POS-80",
+      "connection_type": "windows",
+      "capability_profile": "default",
+      "char_per_line": "42",
+      "ip_address": "",
+      "port": "",
+      "path": "/dev/ttyUSB004",
+      "created_by": 104,
+      "created_at": "2024-09-25T02:35:25.000000Z",
+      "updated_at": "2024-09-25T02:35:25.000000Z"
+    }
+  ]
+}

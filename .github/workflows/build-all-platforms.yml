@@ -1,0 +1,135 @@
+name: Build Zimozo POS on All Platforms
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+jobs:
+  build-android:
+    name: 🤖 Build Android APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Install Dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build Web App
+        run: npm run build
+
+      - name: Sync Capacitor Android
+        run: npx cap sync android
+
+      - name: Configure Android SDK Path
+        run: echo "sdk.dir=$ANDROID_HOME" > android/local.properties
+
+      - name: Build Android Debug APK
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Upload Android APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: zimozo-pos-android
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 7
+
+  build-desktop:
+    name: 💻 Build Desktop (Windows & macOS)
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build Web App and Compile Desktop Binaries
+        run: |
+          npm run build
+          npx electron-builder --win --mac --publish never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Windows & macOS Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: zimozo-pos-desktop
+          path: |
+            dist_electron/*.exe
+            dist_electron/*.dmg
+            dist_electron/*.zip
+          retention-days: 7
+
+  build-ios:
+    name: 🍎 Build iOS App
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build Web App
+        run: npm run build
+
+      - name: Sync Capacitor iOS
+        run: npx cap sync ios
+
+      - name: Compile iOS Project (Unsigned Xcode Build)
+        run: |
+          xcodebuild -workspace ios/App/App.xcworkspace \
+                     -scheme App \
+                     -sdk iphoneos \
+                     -configuration Debug \
+                     CODE_SIGNING_ALLOWED=NO \
+                     CODE_SIGNING_REQUIRED=NO \
+                     clean build
+
+      - name: Package iOS Project
+        run: |
+          mkdir -p ios/build/Payload
+          cp -r ios/App/build/Release-iphoneos/App.app ios/build/Payload/
+          cd ios/build
+          zip -r ../../zimozo-pos-ios-unsigned.ipa Payload
+        continue-on-error: true
+
+      - name: Upload iOS Xcode Workspace & IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: zimozo-pos-ios
+          path: |
+            zimozo-pos-ios-unsigned.ipa
+            ios/App
+          retention-days: 7
