@@ -140,9 +140,10 @@ export default function POS({ user }: { user?: any }) {
 
   useEffect(() => {
     if (isCheckoutOpen) {
-        setPayments([{ method: 'cash', amount: total }]);
+        const defaultMethod = paymentMethods.length > 0 ? paymentMethods[0].name : 'cash';
+        setPayments([{ method: defaultMethod, amount: total }]);
     }
-  }, [isCheckoutOpen]);
+  }, [isCheckoutOpen, total]); // Include total so it resets properly if total changed right before opening
 
   async function handleOpenRegister() {
     setIsOpeningRegister(true);
@@ -668,12 +669,12 @@ export default function POS({ user }: { user?: any }) {
       // Calculate specific stock limit for selected Lot or Expiry
       let lotStockLimit: number | undefined = undefined;
       
-      if ((optionProduct as any).enable_sr_no === 1 && selectedLotOption) {
+      if (selectedLotOption) {
         const matchedLot = availableLots.find(l => l.lot_number === selectedLotOption);
         if (matchedLot) {
           lotStockLimit = parseFloat(String(matchedLot.qty_remaining || 0));
         }
-      } else if ((optionProduct as any).enable_expiry === 1 && selectedExpiryOption) {
+      } else if (selectedExpiryOption) {
         const matchedExpiry = availableExpiries.find(e => e.expiry_date === selectedExpiryOption);
         if (matchedExpiry) {
           lotStockLimit = parseFloat(String(matchedExpiry.qty_remaining || 0));
@@ -759,7 +760,8 @@ export default function POS({ user }: { user?: any }) {
   const remainingToPay = total - totalPaid;
 
   const handleAddPayment = () => {
-    setPayments([...payments, { method: 'cash', amount: 0 }]);
+    const defaultMethod = paymentMethods.length > 0 ? paymentMethods[0].name : 'cash';
+    setPayments([...payments, { method: defaultMethod, amount: 0 }]);
   };
 
   const handleUpdatePayment = (index: number, field: string, value: any) => {

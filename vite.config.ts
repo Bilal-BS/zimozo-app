@@ -6,6 +6,9 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   base: './', // important for electron
+  build: {
+    target: ['es2015', 'chrome60', 'edge18', 'firefox60', 'safari11']
+  },
   server: {
     port: 5173,
     strictPort: true,
