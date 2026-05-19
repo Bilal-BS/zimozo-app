@@ -1346,47 +1346,53 @@ export default function POS({ user }: { user?: any }) {
 
       {/* Modern Multi-Payment Overlay */}
       {isCheckoutOpen && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-md flex items-center justify-center z-[100] p-6">
-          <div className="bg-white w-full max-w-6xl rounded-[2.5rem] shadow-3xl overflow-hidden flex animate-in zoom-in-95 duration-500 border border-slate-200">
-            <div className="w-1/3 bg-slate-50 p-12 flex flex-col border-r border-slate-200">
-              <h3 className="text-3xl font-black uppercase tracking-tighter mb-12 text-slate-900">Split<br/>Payment</h3>
-              <div className="space-y-6 flex-1">
-                <div className="flex justify-between text-sm"><span className="text-slate-500 font-bold uppercase">Payable</span><span className="text-slate-900 font-black">${total.toFixed(2)}</span></div>
-                <div className="flex justify-between text-sm"><span className="text-slate-500 font-bold uppercase">Collected</span><span className="text-emerald-600 font-black">${totalPaid.toFixed(2)}</span></div>
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-md flex items-center justify-center z-[100] p-4 md:p-6">
+          <div className="bg-white w-full max-w-6xl rounded-3xl md:rounded-[2.5rem] shadow-3xl overflow-hidden flex flex-col md:flex-row max-h-[90vh] md:max-h-none animate-in zoom-in-95 duration-500 border border-slate-200">
+            {/* Left Panel - Summary */}
+            <div className="w-full md:w-1/3 bg-slate-50 p-6 md:p-12 flex flex-col border-b md:border-b-0 md:border-r border-slate-200 shrink-0">
+              <div className="flex justify-between items-start md:block">
+                <h3 className="text-xl md:text-3xl font-black uppercase tracking-tighter mb-4 md:mb-12 text-slate-900">Split<br className="hidden md:block"/>Payment</h3>
+                {/* Mobile Close Button in Header */}
+                <button onClick={() => setIsCheckoutOpen(false)} className="md:hidden w-10 h-10 bg-white border border-slate-200 rounded-full flex items-center justify-center text-slate-400 hover:text-red-500"><X size={20} /></button>
+              </div>
+              <div className="space-y-4 md:space-y-6 flex-1">
+                <div className="flex justify-between text-xs md:text-sm"><span className="text-slate-500 font-bold uppercase">Payable</span><span className="text-slate-900 font-black">${total.toFixed(2)}</span></div>
+                <div className="flex justify-between text-xs md:text-sm"><span className="text-slate-500 font-bold uppercase">Collected</span><span className="text-emerald-600 font-black">${totalPaid.toFixed(2)}</span></div>
                 
-                <div className="pt-12 border-t border-slate-200 mt-auto">
+                <div className="pt-4 md:pt-12 border-t border-slate-200 mt-auto">
                     {remainingToPay > 0 ? (
                         <>
-                            <p className="text-xs font-black text-amber-500 uppercase tracking-[0.3em] mb-2">Remaining</p>
-                            <p className="text-6xl font-black text-slate-900 tracking-tighter">${remainingToPay.toFixed(2)}</p>
+                            <p className="text-[10px] md:text-xs font-black text-amber-500 uppercase tracking-[0.3em] mb-1 md:mb-2">Remaining</p>
+                            <p className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter">${remainingToPay.toFixed(2)}</p>
                         </>
                     ) : remainingToPay < 0 ? (
                         <>
-                            <p className="text-xs font-black text-indigo-600 uppercase tracking-[0.3em] mb-2">Change</p>
-                            <p className="text-6xl font-black text-emerald-600 tracking-tighter">${Math.abs(remainingToPay).toFixed(2)}</p>
+                            <p className="text-[10px] md:text-xs font-black text-indigo-600 uppercase tracking-[0.3em] mb-1 md:mb-2">Change</p>
+                            <p className="text-4xl md:text-6xl font-black text-emerald-600 tracking-tighter">${Math.abs(remainingToPay).toFixed(2)}</p>
                         </>
                     ) : (
-                        <div className="flex items-center gap-3 text-emerald-600 font-black uppercase tracking-widest animate-pulse">
-                            <CheckCircle2 size={32} /> Fully Paid
+                        <div className="flex items-center gap-2 md:gap-3 text-emerald-600 font-black uppercase tracking-widest animate-pulse text-sm md:text-base">
+                            <CheckCircle2 size={24} className="md:w-8 md:h-8" /> Fully Paid
                         </div>
                     )}
                 </div>
               </div>
             </div>
 
-            <div className="flex-1 p-16 flex flex-col bg-white">
-              <div className="flex justify-between items-center mb-12">
+            {/* Right Panel - Payments */}
+            <div className="flex-1 p-6 md:p-16 flex flex-col bg-white overflow-y-auto">
+              <div className="hidden md:flex justify-between items-center mb-12">
                 <span className="text-xs font-black text-slate-400 uppercase tracking-widest">Payment Breakdown</span>
                 <button onClick={() => setIsCheckoutOpen(false)} className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center hover:bg-red-50 transition-all text-slate-400 hover:text-red-500"><X size={24} /></button>
               </div>
 
-              <div className="flex-1 overflow-y-auto space-y-4 pr-4 custom-scrollbar">
+              <div className="flex-1 overflow-y-auto space-y-3 md:space-y-4 md:pr-4 custom-scrollbar">
                 {payments.map((p, idx) => (
-                  <div key={idx} className="flex gap-4 items-center animate-in slide-in-from-right-4">
+                  <div key={idx} className="flex gap-2 md:gap-4 items-center animate-in slide-in-from-right-4">
                     <select 
                       value={p.method} 
                       onChange={(e) => handleUpdatePayment(idx, 'method', e.target.value)}
-                      className="flex-1 bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 font-black text-slate-900 outline-none focus:ring-2 focus:ring-indigo-500"
+                      className="flex-1 bg-slate-50 border border-slate-200 rounded-xl md:rounded-2xl px-3 md:px-6 py-3 md:py-4 text-xs md:text-base font-black text-slate-900 outline-none focus:ring-2 focus:ring-indigo-500 truncate"
                     >
                       {paymentMethods.length > 0 ? (
                         paymentMethods.map(pm => (
@@ -1402,41 +1408,43 @@ export default function POS({ user }: { user?: any }) {
                         </>
                       )}
                     </select>
-                    <div className="relative flex-1">
-                        <span className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 font-black">$</span>
+                    <div className="relative flex-[1.5] md:flex-1">
+                        <span className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 text-slate-400 font-black text-sm md:text-base">$</span>
                         <input 
                             type="number" 
                             value={p.amount} 
                             onChange={(e) => handleUpdatePayment(idx, 'amount', Number(e.target.value))}
-                            className="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-10 pr-6 py-4 font-black text-slate-900 outline-none focus:ring-2 focus:ring-indigo-500"
+                            className="w-full bg-slate-50 border border-slate-200 rounded-xl md:rounded-2xl pl-7 md:pl-10 pr-3 md:pr-6 py-3 md:py-4 text-sm md:text-base font-black text-slate-900 outline-none focus:ring-2 focus:ring-indigo-500"
                         />
                     </div>
                     {payments.length > 1 && (
-                        <button onClick={() => setPayments(payments.filter((_, i) => i !== idx))} className="p-4 text-slate-400 hover:text-red-500 transition-colors"><Trash2 size={20} /></button>
+                        <button onClick={() => setPayments(payments.filter((_, i) => i !== idx))} className="p-2 md:p-4 text-slate-400 hover:text-red-500 transition-colors shrink-0"><Trash2 size={18} className="md:w-5 md:h-5" /></button>
                     )}
                   </div>
                 ))}
                 
                 <button 
                     onClick={handleAddPayment}
-                    className="flex items-center gap-2 text-indigo-600 font-black uppercase text-[10px] tracking-widest hover:text-indigo-800 transition-colors pt-4"
+                    className="flex items-center gap-2 text-indigo-600 font-black uppercase text-[10px] tracking-widest hover:text-indigo-800 transition-colors pt-2 md:pt-4"
                 >
                     <Plus size={16} /> Add Split Payment
                 </button>
               </div>
 
-              <button 
-                onClick={handleCheckout} 
-                disabled={remainingToPay > 0.01 && (selectedContact?.name?.toLowerCase().includes('walk-in') || selectedContact?.name?.toLowerCase().includes('walk in'))}
-                className="mt-12 w-full py-6 bg-gradient-to-r from-indigo-500 to-purple-600 disabled:from-slate-100 disabled:to-slate-200 disabled:text-slate-400 text-white rounded-[2rem] font-black uppercase text-sm tracking-widest shadow-2xl shadow-indigo-500/20 hover:scale-[1.02] active:scale-95 transition-all"
-              >
-                {remainingToPay > 0.01 ? 'Complete Credit Sale' : 'Complete Transaction'}
-              </button>
-              {remainingToPay > 0.01 && (selectedContact?.name?.toLowerCase().includes('walk-in') || selectedContact?.name?.toLowerCase().includes('walk in')) && (
-                <p className="mt-4 text-center text-xs font-black text-red-500 uppercase tracking-widest leading-relaxed animate-pulse">
-                  ⚠️ Credit sales are not allowed for Walk-In Customer.<br/>Please select a registered customer.
-                </p>
-              )}
+              <div className="pt-4 md:pt-0 mt-auto shrink-0">
+                <button 
+                  onClick={handleCheckout} 
+                  disabled={remainingToPay > 0.01 && (selectedContact?.name?.toLowerCase().includes('walk-in') || selectedContact?.name?.toLowerCase().includes('walk in'))}
+                  className="w-full py-4 md:py-6 bg-gradient-to-r from-indigo-500 to-purple-600 disabled:from-slate-100 disabled:to-slate-200 disabled:text-slate-400 text-white rounded-2xl md:rounded-[2rem] font-black uppercase text-xs md:text-sm tracking-widest shadow-2xl shadow-indigo-500/20 hover:scale-[1.02] active:scale-95 transition-all"
+                >
+                  {remainingToPay > 0.01 ? 'Complete Credit Sale' : 'Complete Transaction'}
+                </button>
+                {remainingToPay > 0.01 && (selectedContact?.name?.toLowerCase().includes('walk-in') || selectedContact?.name?.toLowerCase().includes('walk in')) && (
+                  <p className="mt-3 md:mt-4 text-center text-[10px] md:text-xs font-black text-red-500 uppercase tracking-widest leading-relaxed animate-pulse">
+                    ⚠️ Credit sales not allowed for Walk-In. Select a customer.
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         </div>
