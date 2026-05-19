@@ -382,6 +382,22 @@ async function downloadUpdates() {
       console.log(`✅ ${customers.length} customers synced.`);
     }
   } catch (e: any) { console.error('Failed to sync customers:', e.message); }
+
+  // 5. Suppliers
+  try {
+    const supRes = await apiClient.get('/connector/api/contactapi?type=supplier');
+    const suppliers = supRes.data?.data || [];
+    if (suppliers.length > 0) {
+      await dbRun('DELETE FROM suppliers');
+      for (const s of suppliers) {
+        await dbRun(`
+          INSERT INTO suppliers (remote_id, name, phone, email, address, sync_status)
+          VALUES (?, ?, ?, ?, ?, 'synced')
+        `, [s.id, s.name, s.mobile, s.email, s.city]);
+      }
+      console.log(`✅ ${suppliers.length} suppliers synced.`);
+    }
+  } catch (e: any) { console.error('Failed to sync suppliers:', e.message); }
 }
 
 // ─────────────────────────────────────────────────────────────

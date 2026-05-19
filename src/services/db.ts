@@ -10,17 +10,19 @@ const electronAPI = (window as any).electronAPI;
 
 export const db = {
   async query<T = any>(sql: string, params: any[] = []): Promise<T[]> {
+    const safeParams = params.map(p => p === undefined ? null : p);
     if (!electronAPI) {
-      return await capacitorQuery(sql, params) as T[];
+      return await capacitorQuery(sql, safeParams) as T[];
     }
-    return await electronAPI.queryDb(sql, params);
+    return await electronAPI.queryDb(sql, safeParams);
   },
 
   async execute(sql: string, params: any[] = []): Promise<DBResult> {
+    const safeParams = params.map(p => p === undefined ? null : p);
     if (!electronAPI) {
-      return await capacitorExecute(sql, params);
+      return await capacitorExecute(sql, safeParams);
     }
-    return await electronAPI.executeDb(sql, params);
+    return await electronAPI.executeDb(sql, safeParams);
   },
 
   async getOne<T = any>(sql: string, params: any[] = []): Promise<T | null> {

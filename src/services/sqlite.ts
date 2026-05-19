@@ -62,6 +62,22 @@ export async function initCapacitorSqlite() {
         );
       `;
       await db.execute(schema);
+      
+      // Patch old schemas on existing devices
+      const patches = [
+        "ALTER TABLE products ADD COLUMN location_stocks_json TEXT;",
+        "ALTER TABLE products ADD COLUMN assigned_locations_json TEXT;",
+        "ALTER TABLE products ADD COLUMN image_url TEXT;",
+        "ALTER TABLE products ADD COLUMN category_id INTEGER;",
+        "ALTER TABLE customers ADD COLUMN balance REAL DEFAULT 0;",
+        "ALTER TABLE business_locations ADD COLUMN settings_json TEXT;",
+        "ALTER TABLE business_locations ADD COLUMN zip_code TEXT;",
+        "ALTER TABLE product_lots ADD COLUMN location_id INTEGER;"
+      ];
+      for (const patch of patches) {
+        try { await db.execute(patch); } catch (_) {}
+      }
+
       console.log('Capacitor SQLite initialized');
     } catch (e) {
       console.error('Failed to init SQLite:', e);
@@ -72,10 +88,10 @@ export async function initCapacitorSqlite() {
 export async function capacitorQuery(sql: string, params: any[] = []): Promise<any[]> {
   if (!db) return [];
   try {
-    const res = await db.query(sql, params);
+    const res = await db.query(sql, params.length ? params : undefined);
     return res.values || [];
-  } catch (e) {
-    console.error('Capacitor DB Query Error:', e, sql, params);
+  } catch (e: any) {
+    console.error('Capacitor DB Query Error:', e.message, sql, params);
     return [];
   }
 }
@@ -83,10 +99,10 @@ export async function capacitorQuery(sql: string, params: any[] = []): Promise<a
 export async function capacitorExecute(sql: string, params: any[] = []): Promise<any> {
   if (!db) return { changes: 0 };
   try {
-    const res = await db.run(sql, params);
+    const res = await db.run(sql, params.length ? params : undefined);
     return { changes: res.changes?.changes || 0, id: res.changes?.lastId };
-  } catch (e) {
-    console.error('Capacitor DB Execute Error:', e, sql, params);
+  } catch (e: any) {
+    console.error('Capacitor DB Execute Error:', e.message, sql, params);
     return { changes: 0 };
   }
 }
