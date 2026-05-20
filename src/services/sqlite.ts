@@ -8,13 +8,29 @@ export async function initCapacitorSqlite() {
   if (Capacitor.isNativePlatform()) {
     try {
       sqlite = new SQLiteConnection(CapacitorSQLite);
-      const ret = await sqlite.checkConnectionsConsistency();
-      const isConn = (await sqlite.isConnection("zimozo_offline.db", false)).result;
       
-      if (ret.result && isConn) {
+      try {
+        await sqlite.checkConnectionsConsistency();
+      } catch (err) {
+        console.warn('checkConnectionsConsistency failed:', err);
+      }
+
+      let isConn = false;
+      try {
+        isConn = (await sqlite.isConnection("zimozo_offline.db", false)).result || false;
+      } catch (err) {
+        console.warn('isConnection check failed:', err);
+      }
+      
+      try {
+        if (isConn) {
+          db = await sqlite.retrieveConnection("zimozo_offline.db", false);
+        } else {
+          db = await sqlite.createConnection("zimozo_offline.db", false, "no-encryption", 1, false);
+        }
+      } catch (err: any) {
+        console.warn('create/retrieve connection failed, forcing retrieve:', err);
         db = await sqlite.retrieveConnection("zimozo_offline.db", false);
-      } else {
-        db = await sqlite.createConnection("zimozo_offline.db", false, "no-encryption", 1, false);
       }
       
       await db.open();
@@ -79,8 +95,9 @@ export async function initCapacitorSqlite() {
       }
 
       console.log('Capacitor SQLite initialized');
-    } catch (e) {
+    } catch (e: any) {
       console.error('Failed to init SQLite:', e);
+      alert('CRITICAL: Database failed to initialize on this Android device. Error: ' + e.message);
     }
   }
 }
@@ -92,6 +109,10 @@ export async function capacitorQuery(sql: string, params: any[] = []): Promise<a
     return res.values || [];
   } catch (e: any) {
     console.error('Capacitor DB Query Error:', e.message, sql, params);
+    if (!window.sessionStorage.getItem('db_query_error_shown')) {
+      alert('DB Query Error: ' + e.message);
+      window.sessionStorage.setItem('db_query_error_shown', 'true');
+    }
     return [];
   }
 }
@@ -103,6 +124,10 @@ export async function capacitorExecute(sql: string, params: any[] = []): Promise
     return { changes: res.changes?.changes || 0, id: res.changes?.lastId };
   } catch (e: any) {
     console.error('Capacitor DB Execute Error:', e.message, sql, params);
+    if (!window.sessionStorage.getItem('db_exec_error_shown')) {
+      alert('DB Sync Insert Error: ' + e.message);
+      window.sessionStorage.setItem('db_exec_error_shown', 'true');
+    }
     return { changes: 0 };
   }
 }

@@ -42,6 +42,7 @@ interface Product {
 }
 
 interface CartItem extends Product {
+  cartItemId: string;
   quantity: number;
   selectedVariation?: string;
   selectedVariationId?: number;
@@ -106,7 +107,7 @@ export default function POS({ user }: { user?: any }) {
   const [optionDiscount, setOptionDiscount] = useState<number>(0);
   const [optionDiscountType, setOptionDiscountType] = useState<'fixed' | 'percentage'>('fixed');
   const [erpSettings, setErpSettings] = useState<any>(null);
-  const [editingCartItemId, setEditingCartItemId] = useState<number | null>(null);
+  const [editingCartItemId, setEditingCartItemId] = useState<string | null>(null);
   const [optionWarranty, setOptionWarranty] = useState<string>('No Warranty');
 
   useEffect(() => {
@@ -138,12 +139,6 @@ export default function POS({ user }: { user?: any }) {
     }
   }
 
-  useEffect(() => {
-    if (isCheckoutOpen) {
-        const defaultMethod = paymentMethods.length > 0 ? paymentMethods[0].name : 'cash';
-        setPayments([{ method: defaultMethod, amount: total }]);
-    }
-  }, [isCheckoutOpen, total]); // Include total so it resets properly if total changed right before opening
 
   async function handleOpenRegister() {
     setIsOpeningRegister(true);
@@ -545,7 +540,7 @@ export default function POS({ user }: { user?: any }) {
             : item
         );
       }
-      return [...prev, { ...cartProduct, quantity: 1 }];
+      return [...prev, { ...cartProduct, cartItemId: Date.now().toString() + Math.random().toString(), quantity: 1 }];
     });
   };
 
@@ -619,7 +614,7 @@ export default function POS({ user }: { user?: any }) {
     setOptionDiscount(item.lineDiscount || 0);
     setOptionDiscountType(item.lineDiscountType || 'fixed');
     setOptionWarranty(item.selectedWarranty || 'No Warranty');
-    setEditingCartItemId(item.id);
+    setEditingCartItemId(item.cartItemId);
   };
 
   const handleConfirmProductOptions = () => {
@@ -649,7 +644,7 @@ export default function POS({ user }: { user?: any }) {
 
       // Editing existing cart item! (Price, Discount & Warranty)
       setCart(prev => prev.map(item => {
-        if (item.id === editingCartItemId) {
+        if (item.cartItemId === editingCartItemId) {
           return {
             ...item,
             customPrice: customP,
@@ -695,13 +690,13 @@ export default function POS({ user }: { user?: any }) {
     setOptionProduct(null);
   };
 
-  const updateQuantity = (id: number, delta: number) => {
+  const updateQuantity = (cartItemId: string, delta: number) => {
     const allowOverselling = erpSettings?.pos_settings?.allow_overselling == 1;
 
     setCart(prev => {
       let preventUpdate = false;
       const updatedCart = prev.map(item => {
-        if (item.id === id) {
+        if (item.cartItemId === cartItemId) {
           const newQty = Math.max(0, item.quantity + delta);
           const currentStock = item.lotStockLimit !== undefined ? item.lotStockLimit : getProductStock(item);
           if (!allowOverselling && newQty > currentStock && delta > 0) {
@@ -721,8 +716,8 @@ export default function POS({ user }: { user?: any }) {
     });
   };
 
-  const updateCartItemValue = (id: number, key: string, value: any) => {
-    setCart(prev => prev.map(item => item.id === id ? { ...item, [key]: value } : item));
+  const updateCartItemValue = (cartItemId: string, key: string, value: any) => {
+    setCart(prev => prev.map(item => item.cartItemId === cartItemId ? { ...item, [key]: value } : item));
   };
 
   const getCalculatedItemDiscount = (item: CartItem) => {
@@ -740,6 +735,13 @@ export default function POS({ user }: { user?: any }) {
 
   const tax = (subtotal - calculatedGlobalDiscount) * taxRate; 
   const total = subtotal - calculatedGlobalDiscount + tax + Number(shippingCharges);
+
+  useEffect(() => {
+    if (isCheckoutOpen) {
+        const defaultMethod = paymentMethods.length > 0 ? paymentMethods[0].name : 'cash';
+        setPayments([{ method: defaultMethod, amount: total }]);
+    }
+  }, [isCheckoutOpen, total]); // Include total so it resets properly if total changed right before opening
 
   const handleGlobalDiscountChange = (val: number, type: 'fixed' | 'percentage') => {
     const maxDiscountPct = user?.max_discount;
@@ -1136,7 +1138,7 @@ export default function POS({ user }: { user?: any }) {
                 <p className="font-black uppercase tracking-widest mt-4 text-center text-slate-400">Scan barcode or search<br/>to add items</p>
               </div>
             ) : cart.map(item => (
-              <div key={item.id} className="py-2.5 px-3 bg-white border border-slate-200/70 rounded-xl flex items-center justify-between gap-2 hover:bg-indigo-50/30 transition-all shadow-sm group relative">
+              <div key={item.cartItemId} className="py-2.5 px-3 bg-white border border-slate-200/70 rounded-xl flex items-center justify-between gap-2 hover:bg-indigo-50/30 transition-all shadow-sm group relative">
                 {/* Clickable Info Area */}
                 <div 
                   onClick={() => handleCartItemClick(item)}
@@ -1183,14 +1185,14 @@ export default function POS({ user }: { user?: any }) {
                   {/* Compact Qty */}
                   <div className="flex items-center bg-slate-50 p-0.5 rounded-lg border border-slate-200">
                     <button 
-                      onClick={(e) => { e.stopPropagation(); updateQuantity(item.id, -1); }} 
+                      onClick={(e) => { e.stopPropagation(); updateQuantity(item.cartItemId, -1); }} 
                       className="w-4 h-4 flex items-center justify-center rounded hover:bg-slate-200 transition-all text-slate-500"
                     >
                       <Minus size={8} />
                     </button>
                     <span className="w-5 text-center font-black text-[9px] text-indigo-600">{item.quantity}</span>
                     <button 
-                      onClick={(e) => { e.stopPropagation(); updateQuantity(item.id, 1); }} 
+                      onClick={(e) => { e.stopPropagation(); updateQuantity(item.cartItemId, 1); }} 
                       className="w-4 h-4 flex items-center justify-center rounded hover:bg-slate-200 transition-all text-slate-500"
                     >
                       <Plus size={8} />
@@ -1206,7 +1208,7 @@ export default function POS({ user }: { user?: any }) {
                   <button 
                     onClick={(e) => { 
                       e.stopPropagation(); 
-                      setCart(prev => prev.filter(ci => ci.id !== item.id)); 
+                      setCart(prev => prev.filter(ci => ci.cartItemId !== item.cartItemId)); 
                     }} 
                     className="w-6 h-6 rounded-md hover:bg-red-50 text-slate-400 hover:text-red-500 flex items-center justify-center transition-all ml-1"
                     title="Remove item"
